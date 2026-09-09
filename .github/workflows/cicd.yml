@@ -43,7 +43,7 @@ jobs:
             - name: Deploy database
               run: alembic upgrade head
             - name: Run Api
-              run: python main.py
+              run: python main.py &
             - name: Wait for FastAPI to be Ready
               run: |
                 echo "Attente du démarrage de FastAPI..."
