@@ -60,8 +60,6 @@ def need_authentication(
 def need_role_admin(
     # parametre a ajouter sur les routes qui ont besoins d'une authentification
     claims: Annotated[dict|None, Depends(jwt_utils.RoleGuard(['admin']))],
-    string: str 
-):
-    eval(string)  
+): 
     return claims
 
