@@ -19,6 +19,11 @@ jobs:
               run: bandit -r . -x .venv
     Zap-Scan:
         runs-on: ubuntu-latest
+        env:
+            DB_URL: postgresql://postgres:test1234@localhost:5432/postgres
+            JWT_SECRET: azertyuiopazertyuiopazertyuiop
+            APPLICATION_PEPPER: ${{secrets.APPLICATION_PEPPER}}
+            TEST_TOKEN: '1234'
         services:
             db:
                 image: postgres
@@ -39,11 +44,6 @@ jobs:
               run: alembic upgrade head
             - name: Run Api
               run: python main.py
-              env:
-                DB_URL: postgresql://postgres:test1234@localhost:5432/postgres
-                JWT_SECRET: azertyuiopazertyuiopazertyuiop
-                APPLICATION_PEPPER: ${{secrets.APPLICATION_PEPPER}}
-                TEST_TOKEN: '1234'
             - name: Wait for FastAPI to be Ready
               run: |
                 echo "Attente du démarrage de FastAPI..."
