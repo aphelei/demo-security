@@ -56,6 +56,7 @@ jobs:
               uses: zaproxy/action-api-scan@v0.10.0
               with:
                 target: http://localhost:8000/openapi.json
+                allow_issue_writing: false
               env:
                 ZAP_AUTH_HEADER_VALUE : 'Bearer 1234'
                 ZAP_AUTH_HEADER: Authorization
