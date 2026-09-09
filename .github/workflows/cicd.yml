@@ -6,10 +6,17 @@ on:
 jobs:
     job1:
         runs-on: ubuntu-latest
+
+        services:
+            postgres:
+                image: postgres@18
+
+
         steps:
             - name: step 1
               run: echo "Hello world !!"
             - name: step 2
               uses: actions/checkout@v7
             - name: step 3
-              run: ls -l -a
+              run: docker ps -a
+            
