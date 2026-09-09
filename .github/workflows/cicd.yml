@@ -19,10 +19,12 @@ jobs:
               run: bandit -r . -x .venv
     Zap-Scan:
         runs-on: ubuntu-latest
-        steps: []
+        steps: 
+            - run: echo 42
     Deploy:
         runs-on: ubuntu-latest
         needs: [Bandit-Scan, Zap-Scan]
-        steps: []
+        steps:
+            - run: echo 42
 
             
